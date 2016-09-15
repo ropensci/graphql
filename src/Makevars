@@ -1,0 +1,18 @@
+CXX_STD=CXX11
+PKG_CPPFLAGS=-I. -Ic
+PKG_LIBS=-L. -lstatgraphparser
+
+LIBGRAPHPARSER=c/GraphQLAst.o c/GraphQLAstNode.o c/GraphQLAstToJSON.o \
+	c/GraphQLAstVisitor.o c/GraphQLParser.o
+
+all: clean
+
+$(SHLIB): libstatgraphparser.a
+
+libstatgraphparser.a: $(LIBGRAPHPARSER)
+	$(AR) rcs libstatgraphparser.a $(LIBGRAPHPARSER)
+
+clean:
+	rm -f $(SHLIB) $(LIBGRAPHPARSER) $(OBJECTS) libstatgraphparser.a
+
+.PHONY: all clean

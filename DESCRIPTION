@@ -1,0 +1,14 @@
+Package: graphql
+Type: Package
+Title: A GraphQL query parser in C++
+Version: 0.1.0
+Author: Jeroen and Scotty
+Maintainer: The package maintainer <yourself@somewhere.net>
+Description: Bindings to the libgraphqlparser C++ library.
+License: BSD
+Encoding: UTF-8
+LinkingTo: Rcpp
+Imports:
+    Rcpp
+LazyData: true
+RoxygenNote: 5.0.1
