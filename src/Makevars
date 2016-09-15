@@ -1,5 +1,6 @@
 CXX_STD=CXX11
 PKG_CPPFLAGS=-I. -Ic
+PKG_CXXFLAGS = $(subst 64,-D__USE_MINGW_ANSI_STDIO,$(subst 32,64,$(WIN)))
 PKG_LIBS=-L. -lstatgraphparser
 
 LIBGRAPHPARSER=c/GraphQLAst.o c/GraphQLAstNode.o c/GraphQLAstToJSON.o \
