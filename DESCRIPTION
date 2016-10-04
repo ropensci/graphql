@@ -6,12 +6,17 @@ Authors@R: c(
     person("Jeroen", "Ooms", , "jeroen.ooms@stat.ucla.edu", role = c("cre", "aut")),
     person("Scott", "Scott", role = "ctb"),
     person("Facebook, Inc, Inc", role = c("aut","cph"), comment = "libgraphqlparser C++ library"))
-Description: Bindings to the libgraphqlparser C++ library. Currently parses
-    graphql and exports the AST in JSON format.
+Description: Bindings to the 'libgraphqlparser' C++ library. Currently parses
+    GraphQL and exports the AST in JSON format.
 License: BSD_3_clause + file LICENSE
 Encoding: UTF-8
+URL: http://graphql.org
+    https://github.com/ropensci/graphql
+BugReports: https://github.com/ropensci/graphql/issues
 LinkingTo: Rcpp
-Imports: Rcpp, jsonlite
+Imports: 
+    Rcpp (>= 0.12.0), 
+    jsonlite
 LazyData: true
 SystemRequirements: C++11
 RoxygenNote: 5.0.1.9000
