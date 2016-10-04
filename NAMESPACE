@@ -2,4 +2,5 @@
 
 export(graphql2json)
 importFrom(Rcpp,sourceCpp)
+importFrom(jsonlite,toJSON)
 useDynLib(graphql)

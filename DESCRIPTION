@@ -11,7 +11,7 @@ Description: Bindings to the libgraphqlparser C++ library. Currently parses
 License: BSD_3_clause + file LICENSE
 Encoding: UTF-8
 LinkingTo: Rcpp
-Imports: Rcpp
+Imports: Rcpp, jsonlite
 LazyData: true
 SystemRequirements: C++11
 RoxygenNote: 5.0.1.9000
