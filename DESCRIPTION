@@ -1,15 +1,17 @@
 Package: graphql
 Type: Package
-Title: A GraphQL query parser in C++
-Version: 0.1.0
-Author: Jeroen and Scotty
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: Bindings to the libgraphqlparser C++ library.
-License: BSD
+Title: A GraphQL Query Parser
+Version: 0.1
+Authors@R: c(
+    person("Jeroen", "Ooms", , "jeroen.ooms@stat.ucla.edu", role = c("cre", "aut")),
+    person("Scott", "Scott", role = "ctb"),
+    person("Facebook, Inc, Inc", role = c("aut","cph"), comment = "libgraphqlparser C++ library"))
+Description: Bindings to the libgraphqlparser C++ library. Currently parses
+    graphql and exports the AST in JSON format.
+License: BSD_3_clause + file LICENSE
 Encoding: UTF-8
 LinkingTo: Rcpp
-Imports:
-    Rcpp
+Imports: Rcpp
 LazyData: true
 SystemRequirements: C++11
 RoxygenNote: 5.0.1.9000
