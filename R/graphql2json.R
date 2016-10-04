@@ -4,6 +4,8 @@
 #'
 #' @export
 #' @useDynLib graphql
+#' @rdname graphql
+#' @aliases graphql
 #' @importFrom Rcpp sourceCpp
 #' @importFrom jsonlite toJSON
 #' @param input a string with graphql syntax
