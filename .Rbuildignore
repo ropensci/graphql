@@ -5,3 +5,5 @@
 .*\.a
 .*\.dll
 
+^\.travis\.yml$
+^appveyor\.yml$
