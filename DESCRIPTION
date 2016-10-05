@@ -4,8 +4,8 @@ Title: A GraphQL Query Parser
 Version: 1.0
 Authors@R: c(
     person("Jeroen", "Ooms", , "jeroen.ooms@stat.ucla.edu", role = c("cre", "aut")),
-    person("Scott", "Scott", role = "ctb"),
-    person("Facebook, Inc, Inc", role = c("aut","cph"), comment = "libgraphqlparser C++ library"))
+    person("Scott", "Wolchok", role = "ctb"),
+    person("Facebook, Inc", role = c("aut","cph"), comment = "libgraphqlparser C++ library"))
 Description: Bindings to the 'libgraphqlparser' C++ library. Currently parses
     GraphQL and exports the AST in JSON format.
 License: BSD_3_clause + file LICENSE
