@@ -22,6 +22,7 @@ MACRO(IntValue, int_value) \
 MACRO(FloatValue, float_value) \
 MACRO(StringValue, string_value) \
 MACRO(BooleanValue, boolean_value) \
+MACRO(NullValue, null_value) \
 MACRO(EnumValue, enum_value) \
 MACRO(ListValue, list_value) \
 MACRO(ObjectValue, object_value) \

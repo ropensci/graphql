@@ -139,6 +139,13 @@ void BooleanValue::accept(visitor::AstVisitor *visitor) {
   visitor->endVisitBooleanValue(*this);
 }
 
+void NullValue::accept(visitor::AstVisitor *visitor) {
+  if (visitor->visitNullValue(*this)) {
+
+  }
+  visitor->endVisitNullValue(*this);
+}
+
 void EnumValue::accept(visitor::AstVisitor *visitor) {
   if (visitor->visitEnumValue(*this)) {
 

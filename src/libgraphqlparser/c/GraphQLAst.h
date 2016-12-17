@@ -80,6 +80,8 @@ const char * GraphQLAstStringValue_get_value(const struct GraphQLAstStringValue 
 struct GraphQLAstBooleanValue;
 int GraphQLAstBooleanValue_get_value(const struct GraphQLAstBooleanValue *node);
 
+struct GraphQLAstNullValue;
+
 struct GraphQLAstEnumValue;
 const char * GraphQLAstEnumValue_get_value(const struct GraphQLAstEnumValue *node);
 

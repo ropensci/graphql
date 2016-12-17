@@ -43,6 +43,7 @@ class IntValue;
 class FloatValue;
 class StringValue;
 class BooleanValue;
+class NullValue;
 class EnumValue;
 class ListValue;
 class ObjectValue;
@@ -506,6 +507,25 @@ class BooleanValue : public Value {
 
   bool getValue() const
   { return value_; }
+
+  void accept(visitor::AstVisitor *visitor) override;
+};
+
+
+class NullValue : public Value {
+ public:
+  explicit NullValue(
+      const yy::location &location
+
+  )
+  : Value(location)
+
+  {}
+
+  ~NullValue() {}
+
+  NullValue(const NullValue&) = delete;
+  NullValue& operator=(const NullValue&) = delete;
 
   void accept(visitor::AstVisitor *visitor) override;
 };

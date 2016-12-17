@@ -63,6 +63,9 @@ public:
   virtual bool visitBooleanValue(const BooleanValue &booleanValue) { return true; }
   virtual void endVisitBooleanValue(const BooleanValue &booleanValue) { }
 
+  virtual bool visitNullValue(const NullValue &nullValue) { return true; }
+  virtual void endVisitNullValue(const NullValue &nullValue) { }
+
   virtual bool visitEnumValue(const EnumValue &enumValue) { return true; }
   virtual void endVisitEnumValue(const EnumValue &enumValue) { }
 
