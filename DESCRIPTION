@@ -14,9 +14,11 @@ URL: http://graphql.org
     https://github.com/ropensci/graphql
 BugReports: https://github.com/ropensci/graphql/issues
 LinkingTo: Rcpp
-Imports: 
-    Rcpp (>= 0.12.0), 
+Imports:
+    Rcpp (>= 0.12.0),
     jsonlite
-LazyData: true
-SystemRequirements: C++11
-RoxygenNote: 5.0.1.9000
+LazyData: NA
+SystemRequirements: NA
+RoxygenNote: 5.0.1
+Suggests:
+    testthat
