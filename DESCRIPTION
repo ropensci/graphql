@@ -4,6 +4,7 @@ Title: A GraphQL Query Parser
 Version: 1.1
 Authors@R: c(
     person("Jeroen", "Ooms", , "jeroen.ooms@stat.ucla.edu", role = c("cre", "aut")),
+    person("Barret", "Schloerke", , "schloerke@gmail.com", role = "ctb"),
     person("Scott", "Wolchok", role = "ctb"),
     person("Facebook, Inc", role = c("aut","cph"), comment = "libgraphqlparser C++ library"))
 Description: Bindings to the 'libgraphqlparser' C++ library. Currently parses

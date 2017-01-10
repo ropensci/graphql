@@ -10,10 +10,12 @@
 #include <Rcpp.h>
 
 // [[Rcpp::export]]
-Rcpp::String dump_json_ast(Rcpp::String graph) {
+Rcpp::String dump_json_ast(Rcpp::String graph, bool schema) {
   graph.set_encoding(CE_UTF8);
   const char *error;
-  auto AST = facebook::graphql::parseString(graph.get_cstring(), &error);
+  auto AST = schema ?
+    facebook::graphql::parseStringWithExperimentalSchemaSupport(graph.get_cstring(), &error) :
+    facebook::graphql::parseString(graph.get_cstring(), &error);
   if (!AST) {
     char buf[1000];
     strncpy(buf, error, 1000);

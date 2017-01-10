@@ -6,13 +6,14 @@
 using namespace Rcpp;
 
 // dump_json_ast
-Rcpp::String dump_json_ast(Rcpp::String graph);
-RcppExport SEXP graphql_dump_json_ast(SEXP graphSEXP) {
+Rcpp::String dump_json_ast(Rcpp::String graph, bool schema);
+RcppExport SEXP graphql_dump_json_ast(SEXP graphSEXP, SEXP schemaSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< Rcpp::String >::type graph(graphSEXP);
-    rcpp_result_gen = Rcpp::wrap(dump_json_ast(graph));
+    Rcpp::traits::input_parameter< bool >::type schema(schemaSEXP);
+    rcpp_result_gen = Rcpp::wrap(dump_json_ast(graph, schema));
     return rcpp_result_gen;
 END_RCPP
 }
