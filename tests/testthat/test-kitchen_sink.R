@@ -2,71 +2,12 @@ context("kitchen_sink")
 
 test_that("kitchen sink parses", {
 
-  kitchen_txt <-
-    "
-    # Copyright (c) 2015, Facebook, Inc.
-    # All rights reserved.
-    #
-    # This source code is licensed under the BSD-style license found in the
-    # LICENSE file in the root directory of this source tree. An additional grant
-    # of patent rights can be found in the PATENTS file in the same directory.
+  kitchen_txt <- paste(readLines("kitchen-sink.graphql"), collapse = "\n")
 
-    query queryName($foo: ComplexType, $site: Site = MOBILE) {
-      whoever123is: node(id: [123, 456]) {
-        id ,
-        ... on User @defer {
-          field2 {
-            id ,
-            alias: field1(first:10, after:$foo,) @include(if: $foo) {
-              id,
-              ...frag
-            }
-          }
-        }
-        ... @skip(unless: $foo) {
-          id
-        }
-        ... {
-          id
-        }
-      }
-    }
+  json_txt <- graphql2json(kitchen_txt)
 
-    mutation likeStory {
-      like(story: 123) @defer {
-        story {
-          id
-        }
-      }
-    }
+  result <- jsonlite::fromJSON(json_txt)
 
-    subscription StoryLikeSubscription($input: StoryLikeSubscribeInput) {
-      storyLikeSubscribe(input: $input) {
-        story {
-          likers {
-            count
-          }
-          likeSentence {
-            text
-          }
-        }
-      }
-    }
-
-    fragment frag on Friend {
-      foo(size: $size, bar: $b, obj: {key: \"value\"})
-    }
-
-    {
-      unnamed(truthy: true, falsey: false, nullish: null),
-      query
-    }
-    "
-
-    json_txt <- graphql2json(kitchen_txt)
-
-    result <- jsonlite::fromJSON(json_txt)
-
-    expect_true(is.list(result))
+  expect_true(is.list(result))
 
 })
