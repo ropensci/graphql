@@ -1,2 +1,5 @@
+1.2
+  - Update upstream from graphql/libgraphqlparser@8fd351b
+
 1.1
   - Update libgraphqlparser from graphql/libgraphqlparser@32680f6

@@ -181,3 +181,147 @@ const char * GraphQLAstName_get_value(const struct GraphQLAstName *node) {
   const auto *realNode = (const Name *)node;
   return realNode->getValue();
 }
+int GraphQLAstSchemaDefinition_get_directives_size(const struct GraphQLAstSchemaDefinition *node) {
+  const auto *realNode = (const SchemaDefinition *)node;
+  return realNode->getDirectives() ? realNode->getDirectives()->size() : 0;
+}
+int GraphQLAstSchemaDefinition_get_operation_types_size(const struct GraphQLAstSchemaDefinition *node) {
+  const auto *realNode = (const SchemaDefinition *)node;
+  return realNode->getOperationTypes().size();
+}
+const char * GraphQLAstOperationTypeDefinition_get_operation(const struct GraphQLAstOperationTypeDefinition *node) {
+  const auto *realNode = (const OperationTypeDefinition *)node;
+  return realNode->getOperation();
+}
+const struct GraphQLAstNamedType * GraphQLAstOperationTypeDefinition_get_type(const struct GraphQLAstOperationTypeDefinition *node) {
+  const auto *realNode = (const OperationTypeDefinition *)node;
+  return (const struct GraphQLAstNamedType *)&realNode->getType();
+}
+const struct GraphQLAstName * GraphQLAstScalarTypeDefinition_get_name(const struct GraphQLAstScalarTypeDefinition *node) {
+  const auto *realNode = (const ScalarTypeDefinition *)node;
+  return (const struct GraphQLAstName *)&realNode->getName();
+}
+int GraphQLAstScalarTypeDefinition_get_directives_size(const struct GraphQLAstScalarTypeDefinition *node) {
+  const auto *realNode = (const ScalarTypeDefinition *)node;
+  return realNode->getDirectives() ? realNode->getDirectives()->size() : 0;
+}
+const struct GraphQLAstName * GraphQLAstObjectTypeDefinition_get_name(const struct GraphQLAstObjectTypeDefinition *node) {
+  const auto *realNode = (const ObjectTypeDefinition *)node;
+  return (const struct GraphQLAstName *)&realNode->getName();
+}
+int GraphQLAstObjectTypeDefinition_get_interfaces_size(const struct GraphQLAstObjectTypeDefinition *node) {
+  const auto *realNode = (const ObjectTypeDefinition *)node;
+  return realNode->getInterfaces() ? realNode->getInterfaces()->size() : 0;
+}
+int GraphQLAstObjectTypeDefinition_get_directives_size(const struct GraphQLAstObjectTypeDefinition *node) {
+  const auto *realNode = (const ObjectTypeDefinition *)node;
+  return realNode->getDirectives() ? realNode->getDirectives()->size() : 0;
+}
+int GraphQLAstObjectTypeDefinition_get_fields_size(const struct GraphQLAstObjectTypeDefinition *node) {
+  const auto *realNode = (const ObjectTypeDefinition *)node;
+  return realNode->getFields().size();
+}
+const struct GraphQLAstName * GraphQLAstFieldDefinition_get_name(const struct GraphQLAstFieldDefinition *node) {
+  const auto *realNode = (const FieldDefinition *)node;
+  return (const struct GraphQLAstName *)&realNode->getName();
+}
+int GraphQLAstFieldDefinition_get_arguments_size(const struct GraphQLAstFieldDefinition *node) {
+  const auto *realNode = (const FieldDefinition *)node;
+  return realNode->getArguments() ? realNode->getArguments()->size() : 0;
+}
+const struct GraphQLAstType * GraphQLAstFieldDefinition_get_type(const struct GraphQLAstFieldDefinition *node) {
+  const auto *realNode = (const FieldDefinition *)node;
+  return (const struct GraphQLAstType *)&realNode->getType();
+}
+int GraphQLAstFieldDefinition_get_directives_size(const struct GraphQLAstFieldDefinition *node) {
+  const auto *realNode = (const FieldDefinition *)node;
+  return realNode->getDirectives() ? realNode->getDirectives()->size() : 0;
+}
+const struct GraphQLAstName * GraphQLAstInputValueDefinition_get_name(const struct GraphQLAstInputValueDefinition *node) {
+  const auto *realNode = (const InputValueDefinition *)node;
+  return (const struct GraphQLAstName *)&realNode->getName();
+}
+const struct GraphQLAstType * GraphQLAstInputValueDefinition_get_type(const struct GraphQLAstInputValueDefinition *node) {
+  const auto *realNode = (const InputValueDefinition *)node;
+  return (const struct GraphQLAstType *)&realNode->getType();
+}
+const struct GraphQLAstValue * GraphQLAstInputValueDefinition_get_default_value(const struct GraphQLAstInputValueDefinition *node) {
+  const auto *realNode = (const InputValueDefinition *)node;
+  return (const struct GraphQLAstValue *)realNode->getDefaultValue();
+}
+int GraphQLAstInputValueDefinition_get_directives_size(const struct GraphQLAstInputValueDefinition *node) {
+  const auto *realNode = (const InputValueDefinition *)node;
+  return realNode->getDirectives() ? realNode->getDirectives()->size() : 0;
+}
+const struct GraphQLAstName * GraphQLAstInterfaceTypeDefinition_get_name(const struct GraphQLAstInterfaceTypeDefinition *node) {
+  const auto *realNode = (const InterfaceTypeDefinition *)node;
+  return (const struct GraphQLAstName *)&realNode->getName();
+}
+int GraphQLAstInterfaceTypeDefinition_get_directives_size(const struct GraphQLAstInterfaceTypeDefinition *node) {
+  const auto *realNode = (const InterfaceTypeDefinition *)node;
+  return realNode->getDirectives() ? realNode->getDirectives()->size() : 0;
+}
+int GraphQLAstInterfaceTypeDefinition_get_fields_size(const struct GraphQLAstInterfaceTypeDefinition *node) {
+  const auto *realNode = (const InterfaceTypeDefinition *)node;
+  return realNode->getFields().size();
+}
+const struct GraphQLAstName * GraphQLAstUnionTypeDefinition_get_name(const struct GraphQLAstUnionTypeDefinition *node) {
+  const auto *realNode = (const UnionTypeDefinition *)node;
+  return (const struct GraphQLAstName *)&realNode->getName();
+}
+int GraphQLAstUnionTypeDefinition_get_directives_size(const struct GraphQLAstUnionTypeDefinition *node) {
+  const auto *realNode = (const UnionTypeDefinition *)node;
+  return realNode->getDirectives() ? realNode->getDirectives()->size() : 0;
+}
+int GraphQLAstUnionTypeDefinition_get_types_size(const struct GraphQLAstUnionTypeDefinition *node) {
+  const auto *realNode = (const UnionTypeDefinition *)node;
+  return realNode->getTypes().size();
+}
+const struct GraphQLAstName * GraphQLAstEnumTypeDefinition_get_name(const struct GraphQLAstEnumTypeDefinition *node) {
+  const auto *realNode = (const EnumTypeDefinition *)node;
+  return (const struct GraphQLAstName *)&realNode->getName();
+}
+int GraphQLAstEnumTypeDefinition_get_directives_size(const struct GraphQLAstEnumTypeDefinition *node) {
+  const auto *realNode = (const EnumTypeDefinition *)node;
+  return realNode->getDirectives() ? realNode->getDirectives()->size() : 0;
+}
+int GraphQLAstEnumTypeDefinition_get_values_size(const struct GraphQLAstEnumTypeDefinition *node) {
+  const auto *realNode = (const EnumTypeDefinition *)node;
+  return realNode->getValues().size();
+}
+const struct GraphQLAstName * GraphQLAstEnumValueDefinition_get_name(const struct GraphQLAstEnumValueDefinition *node) {
+  const auto *realNode = (const EnumValueDefinition *)node;
+  return (const struct GraphQLAstName *)&realNode->getName();
+}
+int GraphQLAstEnumValueDefinition_get_directives_size(const struct GraphQLAstEnumValueDefinition *node) {
+  const auto *realNode = (const EnumValueDefinition *)node;
+  return realNode->getDirectives() ? realNode->getDirectives()->size() : 0;
+}
+const struct GraphQLAstName * GraphQLAstInputObjectTypeDefinition_get_name(const struct GraphQLAstInputObjectTypeDefinition *node) {
+  const auto *realNode = (const InputObjectTypeDefinition *)node;
+  return (const struct GraphQLAstName *)&realNode->getName();
+}
+int GraphQLAstInputObjectTypeDefinition_get_directives_size(const struct GraphQLAstInputObjectTypeDefinition *node) {
+  const auto *realNode = (const InputObjectTypeDefinition *)node;
+  return realNode->getDirectives() ? realNode->getDirectives()->size() : 0;
+}
+int GraphQLAstInputObjectTypeDefinition_get_fields_size(const struct GraphQLAstInputObjectTypeDefinition *node) {
+  const auto *realNode = (const InputObjectTypeDefinition *)node;
+  return realNode->getFields().size();
+}
+const struct GraphQLAstObjectTypeDefinition * GraphQLAstTypeExtensionDefinition_get_definition(const struct GraphQLAstTypeExtensionDefinition *node) {
+  const auto *realNode = (const TypeExtensionDefinition *)node;
+  return (const struct GraphQLAstObjectTypeDefinition *)&realNode->getDefinition();
+}
+const struct GraphQLAstName * GraphQLAstDirectiveDefinition_get_name(const struct GraphQLAstDirectiveDefinition *node) {
+  const auto *realNode = (const DirectiveDefinition *)node;
+  return (const struct GraphQLAstName *)&realNode->getName();
+}
+int GraphQLAstDirectiveDefinition_get_arguments_size(const struct GraphQLAstDirectiveDefinition *node) {
+  const auto *realNode = (const DirectiveDefinition *)node;
+  return realNode->getArguments() ? realNode->getArguments()->size() : 0;
+}
+int GraphQLAstDirectiveDefinition_get_locations_size(const struct GraphQLAstDirectiveDefinition *node) {
+  const auto *realNode = (const DirectiveDefinition *)node;
+  return realNode->getLocations().size();
+}

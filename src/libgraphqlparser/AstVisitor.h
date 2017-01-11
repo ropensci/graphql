@@ -93,6 +93,45 @@ public:
   virtual bool visitName(const Name &name) { return true; }
   virtual void endVisitName(const Name &name) { }
 
+  virtual bool visitSchemaDefinition(const SchemaDefinition &schemaDefinition) { return true; }
+  virtual void endVisitSchemaDefinition(const SchemaDefinition &schemaDefinition) { }
+
+  virtual bool visitOperationTypeDefinition(const OperationTypeDefinition &operationTypeDefinition) { return true; }
+  virtual void endVisitOperationTypeDefinition(const OperationTypeDefinition &operationTypeDefinition) { }
+
+  virtual bool visitScalarTypeDefinition(const ScalarTypeDefinition &scalarTypeDefinition) { return true; }
+  virtual void endVisitScalarTypeDefinition(const ScalarTypeDefinition &scalarTypeDefinition) { }
+
+  virtual bool visitObjectTypeDefinition(const ObjectTypeDefinition &objectTypeDefinition) { return true; }
+  virtual void endVisitObjectTypeDefinition(const ObjectTypeDefinition &objectTypeDefinition) { }
+
+  virtual bool visitFieldDefinition(const FieldDefinition &fieldDefinition) { return true; }
+  virtual void endVisitFieldDefinition(const FieldDefinition &fieldDefinition) { }
+
+  virtual bool visitInputValueDefinition(const InputValueDefinition &inputValueDefinition) { return true; }
+  virtual void endVisitInputValueDefinition(const InputValueDefinition &inputValueDefinition) { }
+
+  virtual bool visitInterfaceTypeDefinition(const InterfaceTypeDefinition &interfaceTypeDefinition) { return true; }
+  virtual void endVisitInterfaceTypeDefinition(const InterfaceTypeDefinition &interfaceTypeDefinition) { }
+
+  virtual bool visitUnionTypeDefinition(const UnionTypeDefinition &unionTypeDefinition) { return true; }
+  virtual void endVisitUnionTypeDefinition(const UnionTypeDefinition &unionTypeDefinition) { }
+
+  virtual bool visitEnumTypeDefinition(const EnumTypeDefinition &enumTypeDefinition) { return true; }
+  virtual void endVisitEnumTypeDefinition(const EnumTypeDefinition &enumTypeDefinition) { }
+
+  virtual bool visitEnumValueDefinition(const EnumValueDefinition &enumValueDefinition) { return true; }
+  virtual void endVisitEnumValueDefinition(const EnumValueDefinition &enumValueDefinition) { }
+
+  virtual bool visitInputObjectTypeDefinition(const InputObjectTypeDefinition &inputObjectTypeDefinition) { return true; }
+  virtual void endVisitInputObjectTypeDefinition(const InputObjectTypeDefinition &inputObjectTypeDefinition) { }
+
+  virtual bool visitTypeExtensionDefinition(const TypeExtensionDefinition &typeExtensionDefinition) { return true; }
+  virtual void endVisitTypeExtensionDefinition(const TypeExtensionDefinition &typeExtensionDefinition) { }
+
+  virtual bool visitDirectiveDefinition(const DirectiveDefinition &directiveDefinition) { return true; }
+  virtual void endVisitDirectiveDefinition(const DirectiveDefinition &directiveDefinition) { }
+
 };
 
 }

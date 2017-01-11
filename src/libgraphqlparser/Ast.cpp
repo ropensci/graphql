@@ -218,6 +218,132 @@ void Name::accept(visitor::AstVisitor *visitor) {
   visitor->endVisitName(*this);
 }
 
+void SchemaDefinition::accept(visitor::AstVisitor *visitor) {
+  if (visitor->visitSchemaDefinition(*this)) {
+
+    if (directives_) { for (const auto &x : *directives_) { x->accept(visitor); } }
+    { for (const auto &x : *operationTypes_) { x->accept(visitor); } }
+  }
+  visitor->endVisitSchemaDefinition(*this);
+}
+
+void OperationTypeDefinition::accept(visitor::AstVisitor *visitor) {
+  if (visitor->visitOperationTypeDefinition(*this)) {
+
+    type_->accept(visitor);
+  }
+  visitor->endVisitOperationTypeDefinition(*this);
+}
+
+void ScalarTypeDefinition::accept(visitor::AstVisitor *visitor) {
+  if (visitor->visitScalarTypeDefinition(*this)) {
+
+    name_->accept(visitor);
+    if (directives_) { for (const auto &x : *directives_) { x->accept(visitor); } }
+  }
+  visitor->endVisitScalarTypeDefinition(*this);
+}
+
+void ObjectTypeDefinition::accept(visitor::AstVisitor *visitor) {
+  if (visitor->visitObjectTypeDefinition(*this)) {
+
+    name_->accept(visitor);
+    if (interfaces_) { for (const auto &x : *interfaces_) { x->accept(visitor); } }
+    if (directives_) { for (const auto &x : *directives_) { x->accept(visitor); } }
+    { for (const auto &x : *fields_) { x->accept(visitor); } }
+  }
+  visitor->endVisitObjectTypeDefinition(*this);
+}
+
+void FieldDefinition::accept(visitor::AstVisitor *visitor) {
+  if (visitor->visitFieldDefinition(*this)) {
+
+    name_->accept(visitor);
+    if (arguments_) { for (const auto &x : *arguments_) { x->accept(visitor); } }
+    type_->accept(visitor);
+    if (directives_) { for (const auto &x : *directives_) { x->accept(visitor); } }
+  }
+  visitor->endVisitFieldDefinition(*this);
+}
+
+void InputValueDefinition::accept(visitor::AstVisitor *visitor) {
+  if (visitor->visitInputValueDefinition(*this)) {
+
+    name_->accept(visitor);
+    type_->accept(visitor);
+    if (defaultValue_) { defaultValue_->accept(visitor); }
+    if (directives_) { for (const auto &x : *directives_) { x->accept(visitor); } }
+  }
+  visitor->endVisitInputValueDefinition(*this);
+}
+
+void InterfaceTypeDefinition::accept(visitor::AstVisitor *visitor) {
+  if (visitor->visitInterfaceTypeDefinition(*this)) {
+
+    name_->accept(visitor);
+    if (directives_) { for (const auto &x : *directives_) { x->accept(visitor); } }
+    { for (const auto &x : *fields_) { x->accept(visitor); } }
+  }
+  visitor->endVisitInterfaceTypeDefinition(*this);
+}
+
+void UnionTypeDefinition::accept(visitor::AstVisitor *visitor) {
+  if (visitor->visitUnionTypeDefinition(*this)) {
+
+    name_->accept(visitor);
+    if (directives_) { for (const auto &x : *directives_) { x->accept(visitor); } }
+    { for (const auto &x : *types_) { x->accept(visitor); } }
+  }
+  visitor->endVisitUnionTypeDefinition(*this);
+}
+
+void EnumTypeDefinition::accept(visitor::AstVisitor *visitor) {
+  if (visitor->visitEnumTypeDefinition(*this)) {
+
+    name_->accept(visitor);
+    if (directives_) { for (const auto &x : *directives_) { x->accept(visitor); } }
+    { for (const auto &x : *values_) { x->accept(visitor); } }
+  }
+  visitor->endVisitEnumTypeDefinition(*this);
+}
+
+void EnumValueDefinition::accept(visitor::AstVisitor *visitor) {
+  if (visitor->visitEnumValueDefinition(*this)) {
+
+    name_->accept(visitor);
+    if (directives_) { for (const auto &x : *directives_) { x->accept(visitor); } }
+  }
+  visitor->endVisitEnumValueDefinition(*this);
+}
+
+void InputObjectTypeDefinition::accept(visitor::AstVisitor *visitor) {
+  if (visitor->visitInputObjectTypeDefinition(*this)) {
+
+    name_->accept(visitor);
+    if (directives_) { for (const auto &x : *directives_) { x->accept(visitor); } }
+    { for (const auto &x : *fields_) { x->accept(visitor); } }
+  }
+  visitor->endVisitInputObjectTypeDefinition(*this);
+}
+
+void TypeExtensionDefinition::accept(visitor::AstVisitor *visitor) {
+  if (visitor->visitTypeExtensionDefinition(*this)) {
+
+    definition_->accept(visitor);
+  }
+  visitor->endVisitTypeExtensionDefinition(*this);
+}
+
+void DirectiveDefinition::accept(visitor::AstVisitor *visitor) {
+  if (visitor->visitDirectiveDefinition(*this)) {
+
+    name_->accept(visitor);
+    if (arguments_) { for (const auto &x : *arguments_) { x->accept(visitor); } }
+    { for (const auto &x : *locations_) { x->accept(visitor); } }
+  }
+  visitor->endVisitDirectiveDefinition(*this);
+}
+
 }
 }
 }

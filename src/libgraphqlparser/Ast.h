@@ -54,6 +54,19 @@ class NamedType;
 class ListType;
 class NonNullType;
 class Name;
+class SchemaDefinition;
+class OperationTypeDefinition;
+class ScalarTypeDefinition;
+class ObjectTypeDefinition;
+class FieldDefinition;
+class InputValueDefinition;
+class InterfaceTypeDefinition;
+class UnionTypeDefinition;
+class EnumTypeDefinition;
+class EnumValueDefinition;
+class InputObjectTypeDefinition;
+class TypeExtensionDefinition;
+class DirectiveDefinition;
 
 class Definition : public Node {
  public:
@@ -756,6 +769,443 @@ class Name : public Node {
 
   const char * getValue() const
   { return value_.get(); }
+
+  void accept(visitor::AstVisitor *visitor) override;
+};
+
+
+class SchemaDefinition : public Definition {
+  std::unique_ptr<std::vector<std::unique_ptr<Directive>>> directives_;
+  std::unique_ptr<std::vector<std::unique_ptr<OperationTypeDefinition>>> operationTypes_;
+ public:
+  explicit SchemaDefinition(
+      const yy::location &location,
+      std::vector<std::unique_ptr<Directive>> * directives,
+      std::vector<std::unique_ptr<OperationTypeDefinition>> * operationTypes
+  )
+  : Definition(location),
+    directives_(directives),
+    operationTypes_(operationTypes)
+  {}
+
+  ~SchemaDefinition() {}
+
+  SchemaDefinition(const SchemaDefinition&) = delete;
+  SchemaDefinition& operator=(const SchemaDefinition&) = delete;
+
+  const std::vector<std::unique_ptr<Directive>>* getDirectives() const
+  { return directives_.get(); }
+
+  const std::vector<std::unique_ptr<OperationTypeDefinition>>& getOperationTypes() const
+  { return *operationTypes_; }
+
+  void accept(visitor::AstVisitor *visitor) override;
+};
+
+
+class OperationTypeDefinition : public Node {
+  std::unique_ptr<const char, CDeleter> operation_;
+  std::unique_ptr<NamedType> type_;
+ public:
+  explicit OperationTypeDefinition(
+      const yy::location &location,
+      const char * operation,
+      NamedType * type
+  )
+  : Node(location),
+    operation_(operation),
+    type_(type)
+  {}
+
+  ~OperationTypeDefinition() {}
+
+  OperationTypeDefinition(const OperationTypeDefinition&) = delete;
+  OperationTypeDefinition& operator=(const OperationTypeDefinition&) = delete;
+
+  const char * getOperation() const
+  { return operation_.get(); }
+
+  const NamedType& getType() const
+  { return *type_; }
+
+  void accept(visitor::AstVisitor *visitor) override;
+};
+
+
+class ScalarTypeDefinition : public Definition {
+  std::unique_ptr<Name> name_;
+  std::unique_ptr<std::vector<std::unique_ptr<Directive>>> directives_;
+ public:
+  explicit ScalarTypeDefinition(
+      const yy::location &location,
+      Name * name,
+      std::vector<std::unique_ptr<Directive>> * directives
+  )
+  : Definition(location),
+    name_(name),
+    directives_(directives)
+  {}
+
+  ~ScalarTypeDefinition() {}
+
+  ScalarTypeDefinition(const ScalarTypeDefinition&) = delete;
+  ScalarTypeDefinition& operator=(const ScalarTypeDefinition&) = delete;
+
+  const Name& getName() const
+  { return *name_; }
+
+  const std::vector<std::unique_ptr<Directive>>* getDirectives() const
+  { return directives_.get(); }
+
+  void accept(visitor::AstVisitor *visitor) override;
+};
+
+
+class ObjectTypeDefinition : public Definition {
+  std::unique_ptr<Name> name_;
+  std::unique_ptr<std::vector<std::unique_ptr<NamedType>>> interfaces_;
+  std::unique_ptr<std::vector<std::unique_ptr<Directive>>> directives_;
+  std::unique_ptr<std::vector<std::unique_ptr<FieldDefinition>>> fields_;
+ public:
+  explicit ObjectTypeDefinition(
+      const yy::location &location,
+      Name * name,
+      std::vector<std::unique_ptr<NamedType>> * interfaces,
+      std::vector<std::unique_ptr<Directive>> * directives,
+      std::vector<std::unique_ptr<FieldDefinition>> * fields
+  )
+  : Definition(location),
+    name_(name),
+    interfaces_(interfaces),
+    directives_(directives),
+    fields_(fields)
+  {}
+
+  ~ObjectTypeDefinition() {}
+
+  ObjectTypeDefinition(const ObjectTypeDefinition&) = delete;
+  ObjectTypeDefinition& operator=(const ObjectTypeDefinition&) = delete;
+
+  const Name& getName() const
+  { return *name_; }
+
+  const std::vector<std::unique_ptr<NamedType>>* getInterfaces() const
+  { return interfaces_.get(); }
+
+  const std::vector<std::unique_ptr<Directive>>* getDirectives() const
+  { return directives_.get(); }
+
+  const std::vector<std::unique_ptr<FieldDefinition>>& getFields() const
+  { return *fields_; }
+
+  void accept(visitor::AstVisitor *visitor) override;
+};
+
+
+class FieldDefinition : public Node {
+  std::unique_ptr<Name> name_;
+  std::unique_ptr<std::vector<std::unique_ptr<InputValueDefinition>>> arguments_;
+  std::unique_ptr<Type> type_;
+  std::unique_ptr<std::vector<std::unique_ptr<Directive>>> directives_;
+ public:
+  explicit FieldDefinition(
+      const yy::location &location,
+      Name * name,
+      std::vector<std::unique_ptr<InputValueDefinition>> * arguments,
+      Type * type,
+      std::vector<std::unique_ptr<Directive>> * directives
+  )
+  : Node(location),
+    name_(name),
+    arguments_(arguments),
+    type_(type),
+    directives_(directives)
+  {}
+
+  ~FieldDefinition() {}
+
+  FieldDefinition(const FieldDefinition&) = delete;
+  FieldDefinition& operator=(const FieldDefinition&) = delete;
+
+  const Name& getName() const
+  { return *name_; }
+
+  const std::vector<std::unique_ptr<InputValueDefinition>>* getArguments() const
+  { return arguments_.get(); }
+
+  const Type& getType() const
+  { return *type_; }
+
+  const std::vector<std::unique_ptr<Directive>>* getDirectives() const
+  { return directives_.get(); }
+
+  void accept(visitor::AstVisitor *visitor) override;
+};
+
+
+class InputValueDefinition : public Node {
+  std::unique_ptr<Name> name_;
+  std::unique_ptr<Type> type_;
+  std::unique_ptr<Value> defaultValue_;
+  std::unique_ptr<std::vector<std::unique_ptr<Directive>>> directives_;
+ public:
+  explicit InputValueDefinition(
+      const yy::location &location,
+      Name * name,
+      Type * type,
+      Value * defaultValue,
+      std::vector<std::unique_ptr<Directive>> * directives
+  )
+  : Node(location),
+    name_(name),
+    type_(type),
+    defaultValue_(defaultValue),
+    directives_(directives)
+  {}
+
+  ~InputValueDefinition() {}
+
+  InputValueDefinition(const InputValueDefinition&) = delete;
+  InputValueDefinition& operator=(const InputValueDefinition&) = delete;
+
+  const Name& getName() const
+  { return *name_; }
+
+  const Type& getType() const
+  { return *type_; }
+
+  const Value* getDefaultValue() const
+  { return defaultValue_.get(); }
+
+  const std::vector<std::unique_ptr<Directive>>* getDirectives() const
+  { return directives_.get(); }
+
+  void accept(visitor::AstVisitor *visitor) override;
+};
+
+
+class InterfaceTypeDefinition : public Definition {
+  std::unique_ptr<Name> name_;
+  std::unique_ptr<std::vector<std::unique_ptr<Directive>>> directives_;
+  std::unique_ptr<std::vector<std::unique_ptr<FieldDefinition>>> fields_;
+ public:
+  explicit InterfaceTypeDefinition(
+      const yy::location &location,
+      Name * name,
+      std::vector<std::unique_ptr<Directive>> * directives,
+      std::vector<std::unique_ptr<FieldDefinition>> * fields
+  )
+  : Definition(location),
+    name_(name),
+    directives_(directives),
+    fields_(fields)
+  {}
+
+  ~InterfaceTypeDefinition() {}
+
+  InterfaceTypeDefinition(const InterfaceTypeDefinition&) = delete;
+  InterfaceTypeDefinition& operator=(const InterfaceTypeDefinition&) = delete;
+
+  const Name& getName() const
+  { return *name_; }
+
+  const std::vector<std::unique_ptr<Directive>>* getDirectives() const
+  { return directives_.get(); }
+
+  const std::vector<std::unique_ptr<FieldDefinition>>& getFields() const
+  { return *fields_; }
+
+  void accept(visitor::AstVisitor *visitor) override;
+};
+
+
+class UnionTypeDefinition : public Definition {
+  std::unique_ptr<Name> name_;
+  std::unique_ptr<std::vector<std::unique_ptr<Directive>>> directives_;
+  std::unique_ptr<std::vector<std::unique_ptr<NamedType>>> types_;
+ public:
+  explicit UnionTypeDefinition(
+      const yy::location &location,
+      Name * name,
+      std::vector<std::unique_ptr<Directive>> * directives,
+      std::vector<std::unique_ptr<NamedType>> * types
+  )
+  : Definition(location),
+    name_(name),
+    directives_(directives),
+    types_(types)
+  {}
+
+  ~UnionTypeDefinition() {}
+
+  UnionTypeDefinition(const UnionTypeDefinition&) = delete;
+  UnionTypeDefinition& operator=(const UnionTypeDefinition&) = delete;
+
+  const Name& getName() const
+  { return *name_; }
+
+  const std::vector<std::unique_ptr<Directive>>* getDirectives() const
+  { return directives_.get(); }
+
+  const std::vector<std::unique_ptr<NamedType>>& getTypes() const
+  { return *types_; }
+
+  void accept(visitor::AstVisitor *visitor) override;
+};
+
+
+class EnumTypeDefinition : public Definition {
+  std::unique_ptr<Name> name_;
+  std::unique_ptr<std::vector<std::unique_ptr<Directive>>> directives_;
+  std::unique_ptr<std::vector<std::unique_ptr<EnumValueDefinition>>> values_;
+ public:
+  explicit EnumTypeDefinition(
+      const yy::location &location,
+      Name * name,
+      std::vector<std::unique_ptr<Directive>> * directives,
+      std::vector<std::unique_ptr<EnumValueDefinition>> * values
+  )
+  : Definition(location),
+    name_(name),
+    directives_(directives),
+    values_(values)
+  {}
+
+  ~EnumTypeDefinition() {}
+
+  EnumTypeDefinition(const EnumTypeDefinition&) = delete;
+  EnumTypeDefinition& operator=(const EnumTypeDefinition&) = delete;
+
+  const Name& getName() const
+  { return *name_; }
+
+  const std::vector<std::unique_ptr<Directive>>* getDirectives() const
+  { return directives_.get(); }
+
+  const std::vector<std::unique_ptr<EnumValueDefinition>>& getValues() const
+  { return *values_; }
+
+  void accept(visitor::AstVisitor *visitor) override;
+};
+
+
+class EnumValueDefinition : public Node {
+  std::unique_ptr<Name> name_;
+  std::unique_ptr<std::vector<std::unique_ptr<Directive>>> directives_;
+ public:
+  explicit EnumValueDefinition(
+      const yy::location &location,
+      Name * name,
+      std::vector<std::unique_ptr<Directive>> * directives
+  )
+  : Node(location),
+    name_(name),
+    directives_(directives)
+  {}
+
+  ~EnumValueDefinition() {}
+
+  EnumValueDefinition(const EnumValueDefinition&) = delete;
+  EnumValueDefinition& operator=(const EnumValueDefinition&) = delete;
+
+  const Name& getName() const
+  { return *name_; }
+
+  const std::vector<std::unique_ptr<Directive>>* getDirectives() const
+  { return directives_.get(); }
+
+  void accept(visitor::AstVisitor *visitor) override;
+};
+
+
+class InputObjectTypeDefinition : public Definition {
+  std::unique_ptr<Name> name_;
+  std::unique_ptr<std::vector<std::unique_ptr<Directive>>> directives_;
+  std::unique_ptr<std::vector<std::unique_ptr<InputValueDefinition>>> fields_;
+ public:
+  explicit InputObjectTypeDefinition(
+      const yy::location &location,
+      Name * name,
+      std::vector<std::unique_ptr<Directive>> * directives,
+      std::vector<std::unique_ptr<InputValueDefinition>> * fields
+  )
+  : Definition(location),
+    name_(name),
+    directives_(directives),
+    fields_(fields)
+  {}
+
+  ~InputObjectTypeDefinition() {}
+
+  InputObjectTypeDefinition(const InputObjectTypeDefinition&) = delete;
+  InputObjectTypeDefinition& operator=(const InputObjectTypeDefinition&) = delete;
+
+  const Name& getName() const
+  { return *name_; }
+
+  const std::vector<std::unique_ptr<Directive>>* getDirectives() const
+  { return directives_.get(); }
+
+  const std::vector<std::unique_ptr<InputValueDefinition>>& getFields() const
+  { return *fields_; }
+
+  void accept(visitor::AstVisitor *visitor) override;
+};
+
+
+class TypeExtensionDefinition : public Definition {
+  std::unique_ptr<ObjectTypeDefinition> definition_;
+ public:
+  explicit TypeExtensionDefinition(
+      const yy::location &location,
+      ObjectTypeDefinition * definition
+  )
+  : Definition(location),
+    definition_(definition)
+  {}
+
+  ~TypeExtensionDefinition() {}
+
+  TypeExtensionDefinition(const TypeExtensionDefinition&) = delete;
+  TypeExtensionDefinition& operator=(const TypeExtensionDefinition&) = delete;
+
+  const ObjectTypeDefinition& getDefinition() const
+  { return *definition_; }
+
+  void accept(visitor::AstVisitor *visitor) override;
+};
+
+
+class DirectiveDefinition : public Definition {
+  std::unique_ptr<Name> name_;
+  std::unique_ptr<std::vector<std::unique_ptr<InputValueDefinition>>> arguments_;
+  std::unique_ptr<std::vector<std::unique_ptr<Name>>> locations_;
+ public:
+  explicit DirectiveDefinition(
+      const yy::location &location,
+      Name * name,
+      std::vector<std::unique_ptr<InputValueDefinition>> * arguments,
+      std::vector<std::unique_ptr<Name>> * locations
+  )
+  : Definition(location),
+    name_(name),
+    arguments_(arguments),
+    locations_(locations)
+  {}
+
+  ~DirectiveDefinition() {}
+
+  DirectiveDefinition(const DirectiveDefinition&) = delete;
+  DirectiveDefinition& operator=(const DirectiveDefinition&) = delete;
+
+  const Name& getName() const
+  { return *name_; }
+
+  const std::vector<std::unique_ptr<InputValueDefinition>>* getArguments() const
+  { return arguments_.get(); }
+
+  const std::vector<std::unique_ptr<Name>>& getLocations() const
+  { return *locations_; }
 
   void accept(visitor::AstVisitor *visitor) override;
 };

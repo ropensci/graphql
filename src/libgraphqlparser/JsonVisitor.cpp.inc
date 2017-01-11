@@ -278,3 +278,182 @@ void JsonVisitor::endVisitName(const Name &node) {
   printed_.back().emplace_back(fields.finishPrinting());
 }
 
+bool JsonVisitor::visitSchemaDefinition(const SchemaDefinition &node) {
+  visitNode();
+  return true;
+}
+
+void JsonVisitor::endVisitSchemaDefinition(const SchemaDefinition &node) {
+  NodeFieldPrinter fields(*this, "SchemaDefinition", node);
+  fields.printNullablePluralField("directives", node.getDirectives());
+  fields.printPluralField("operationTypes", node.getOperationTypes());
+
+  endVisitNode(fields.finishPrinting());
+}
+
+bool JsonVisitor::visitOperationTypeDefinition(const OperationTypeDefinition &node) {
+  visitNode();
+  return true;
+}
+
+void JsonVisitor::endVisitOperationTypeDefinition(const OperationTypeDefinition &node) {
+  NodeFieldPrinter fields(*this, "OperationTypeDefinition", node);
+  fields.printSingularPrimitiveField("operation", node.getOperation());
+  fields.printSingularObjectField("type");
+
+  endVisitNode(fields.finishPrinting());
+}
+
+bool JsonVisitor::visitScalarTypeDefinition(const ScalarTypeDefinition &node) {
+  visitNode();
+  return true;
+}
+
+void JsonVisitor::endVisitScalarTypeDefinition(const ScalarTypeDefinition &node) {
+  NodeFieldPrinter fields(*this, "ScalarTypeDefinition", node);
+  fields.printSingularObjectField("name");
+  fields.printNullablePluralField("directives", node.getDirectives());
+
+  endVisitNode(fields.finishPrinting());
+}
+
+bool JsonVisitor::visitObjectTypeDefinition(const ObjectTypeDefinition &node) {
+  visitNode();
+  return true;
+}
+
+void JsonVisitor::endVisitObjectTypeDefinition(const ObjectTypeDefinition &node) {
+  NodeFieldPrinter fields(*this, "ObjectTypeDefinition", node);
+  fields.printSingularObjectField("name");
+  fields.printNullablePluralField("interfaces", node.getInterfaces());
+  fields.printNullablePluralField("directives", node.getDirectives());
+  fields.printPluralField("fields", node.getFields());
+
+  endVisitNode(fields.finishPrinting());
+}
+
+bool JsonVisitor::visitFieldDefinition(const FieldDefinition &node) {
+  visitNode();
+  return true;
+}
+
+void JsonVisitor::endVisitFieldDefinition(const FieldDefinition &node) {
+  NodeFieldPrinter fields(*this, "FieldDefinition", node);
+  fields.printSingularObjectField("name");
+  fields.printNullablePluralField("arguments", node.getArguments());
+  fields.printSingularObjectField("type");
+  fields.printNullablePluralField("directives", node.getDirectives());
+
+  endVisitNode(fields.finishPrinting());
+}
+
+bool JsonVisitor::visitInputValueDefinition(const InputValueDefinition &node) {
+  visitNode();
+  return true;
+}
+
+void JsonVisitor::endVisitInputValueDefinition(const InputValueDefinition &node) {
+  NodeFieldPrinter fields(*this, "InputValueDefinition", node);
+  fields.printSingularObjectField("name");
+  fields.printSingularObjectField("type");
+  fields.printNullableSingularObjectField("defaultValue", node.getDefaultValue());
+  fields.printNullablePluralField("directives", node.getDirectives());
+
+  endVisitNode(fields.finishPrinting());
+}
+
+bool JsonVisitor::visitInterfaceTypeDefinition(const InterfaceTypeDefinition &node) {
+  visitNode();
+  return true;
+}
+
+void JsonVisitor::endVisitInterfaceTypeDefinition(const InterfaceTypeDefinition &node) {
+  NodeFieldPrinter fields(*this, "InterfaceTypeDefinition", node);
+  fields.printSingularObjectField("name");
+  fields.printNullablePluralField("directives", node.getDirectives());
+  fields.printPluralField("fields", node.getFields());
+
+  endVisitNode(fields.finishPrinting());
+}
+
+bool JsonVisitor::visitUnionTypeDefinition(const UnionTypeDefinition &node) {
+  visitNode();
+  return true;
+}
+
+void JsonVisitor::endVisitUnionTypeDefinition(const UnionTypeDefinition &node) {
+  NodeFieldPrinter fields(*this, "UnionTypeDefinition", node);
+  fields.printSingularObjectField("name");
+  fields.printNullablePluralField("directives", node.getDirectives());
+  fields.printPluralField("types", node.getTypes());
+
+  endVisitNode(fields.finishPrinting());
+}
+
+bool JsonVisitor::visitEnumTypeDefinition(const EnumTypeDefinition &node) {
+  visitNode();
+  return true;
+}
+
+void JsonVisitor::endVisitEnumTypeDefinition(const EnumTypeDefinition &node) {
+  NodeFieldPrinter fields(*this, "EnumTypeDefinition", node);
+  fields.printSingularObjectField("name");
+  fields.printNullablePluralField("directives", node.getDirectives());
+  fields.printPluralField("values", node.getValues());
+
+  endVisitNode(fields.finishPrinting());
+}
+
+bool JsonVisitor::visitEnumValueDefinition(const EnumValueDefinition &node) {
+  visitNode();
+  return true;
+}
+
+void JsonVisitor::endVisitEnumValueDefinition(const EnumValueDefinition &node) {
+  NodeFieldPrinter fields(*this, "EnumValueDefinition", node);
+  fields.printSingularObjectField("name");
+  fields.printNullablePluralField("directives", node.getDirectives());
+
+  endVisitNode(fields.finishPrinting());
+}
+
+bool JsonVisitor::visitInputObjectTypeDefinition(const InputObjectTypeDefinition &node) {
+  visitNode();
+  return true;
+}
+
+void JsonVisitor::endVisitInputObjectTypeDefinition(const InputObjectTypeDefinition &node) {
+  NodeFieldPrinter fields(*this, "InputObjectTypeDefinition", node);
+  fields.printSingularObjectField("name");
+  fields.printNullablePluralField("directives", node.getDirectives());
+  fields.printPluralField("fields", node.getFields());
+
+  endVisitNode(fields.finishPrinting());
+}
+
+bool JsonVisitor::visitTypeExtensionDefinition(const TypeExtensionDefinition &node) {
+  visitNode();
+  return true;
+}
+
+void JsonVisitor::endVisitTypeExtensionDefinition(const TypeExtensionDefinition &node) {
+  NodeFieldPrinter fields(*this, "TypeExtensionDefinition", node);
+  fields.printSingularObjectField("definition");
+
+  endVisitNode(fields.finishPrinting());
+}
+
+bool JsonVisitor::visitDirectiveDefinition(const DirectiveDefinition &node) {
+  visitNode();
+  return true;
+}
+
+void JsonVisitor::endVisitDirectiveDefinition(const DirectiveDefinition &node) {
+  NodeFieldPrinter fields(*this, "DirectiveDefinition", node);
+  fields.printSingularObjectField("name");
+  fields.printNullablePluralField("arguments", node.getArguments());
+  fields.printPluralField("locations", node.getLocations());
+
+  endVisitNode(fields.finishPrinting());
+}
+

@@ -72,3 +72,42 @@ void endVisitNonNullType(const NonNullType &node) override;
 
 void endVisitName(const Name &node) override;
 
+bool visitSchemaDefinition(const SchemaDefinition &node) override;
+void endVisitSchemaDefinition(const SchemaDefinition &node) override;
+
+bool visitOperationTypeDefinition(const OperationTypeDefinition &node) override;
+void endVisitOperationTypeDefinition(const OperationTypeDefinition &node) override;
+
+bool visitScalarTypeDefinition(const ScalarTypeDefinition &node) override;
+void endVisitScalarTypeDefinition(const ScalarTypeDefinition &node) override;
+
+bool visitObjectTypeDefinition(const ObjectTypeDefinition &node) override;
+void endVisitObjectTypeDefinition(const ObjectTypeDefinition &node) override;
+
+bool visitFieldDefinition(const FieldDefinition &node) override;
+void endVisitFieldDefinition(const FieldDefinition &node) override;
+
+bool visitInputValueDefinition(const InputValueDefinition &node) override;
+void endVisitInputValueDefinition(const InputValueDefinition &node) override;
+
+bool visitInterfaceTypeDefinition(const InterfaceTypeDefinition &node) override;
+void endVisitInterfaceTypeDefinition(const InterfaceTypeDefinition &node) override;
+
+bool visitUnionTypeDefinition(const UnionTypeDefinition &node) override;
+void endVisitUnionTypeDefinition(const UnionTypeDefinition &node) override;
+
+bool visitEnumTypeDefinition(const EnumTypeDefinition &node) override;
+void endVisitEnumTypeDefinition(const EnumTypeDefinition &node) override;
+
+bool visitEnumValueDefinition(const EnumValueDefinition &node) override;
+void endVisitEnumValueDefinition(const EnumValueDefinition &node) override;
+
+bool visitInputObjectTypeDefinition(const InputObjectTypeDefinition &node) override;
+void endVisitInputObjectTypeDefinition(const InputObjectTypeDefinition &node) override;
+
+bool visitTypeExtensionDefinition(const TypeExtensionDefinition &node) override;
+void endVisitTypeExtensionDefinition(const TypeExtensionDefinition &node) override;
+
+bool visitDirectiveDefinition(const DirectiveDefinition &node) override;
+void endVisitDirectiveDefinition(const DirectiveDefinition &node) override;
+

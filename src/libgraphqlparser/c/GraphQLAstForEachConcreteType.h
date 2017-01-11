@@ -31,4 +31,17 @@ MACRO(Directive, directive) \
 MACRO(NamedType, named_type) \
 MACRO(ListType, list_type) \
 MACRO(NonNullType, non_null_type) \
-MACRO(Name, name)
+MACRO(Name, name) \
+MACRO(SchemaDefinition, schema_definition) \
+MACRO(OperationTypeDefinition, operation_type_definition) \
+MACRO(ScalarTypeDefinition, scalar_type_definition) \
+MACRO(ObjectTypeDefinition, object_type_definition) \
+MACRO(FieldDefinition, field_definition) \
+MACRO(InputValueDefinition, input_value_definition) \
+MACRO(InterfaceTypeDefinition, interface_type_definition) \
+MACRO(UnionTypeDefinition, union_type_definition) \
+MACRO(EnumTypeDefinition, enum_type_definition) \
+MACRO(EnumValueDefinition, enum_value_definition) \
+MACRO(InputObjectTypeDefinition, input_object_type_definition) \
+MACRO(TypeExtensionDefinition, type_extension_definition) \
+MACRO(DirectiveDefinition, directive_definition)
