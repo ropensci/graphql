@@ -5,3 +5,7 @@ dump_json_ast <- function(graph) {
     .Call('graphql_dump_json_ast', PACKAGE = 'graphql', graph)
 }
 
+dump_schema_json_ast <- function(graph) {
+    .Call('graphql_dump_schema_json_ast', PACKAGE = 'graphql', graph)
+}
+

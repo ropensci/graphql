@@ -3,7 +3,7 @@
 \name{graphql2json}
 \alias{graphql}
 \alias{graphql2json}
-\title{Dump GraphQL to JSON}
+\title{Dump GraphQL Queries to JSON}
 \usage{
 graphql2json(input)
 }
@@ -11,7 +11,7 @@ graphql2json(input)
 \item{input}{a string with graphql syntax}
 }
 \description{
-Parses GraphQL and exports the AST in JSON format.
+Parses GraphQL queries and exports the AST in JSON format.
 }
 \examples{
 graphql2json("{ field(complex: { a: { b: [ $var ] } }) }")

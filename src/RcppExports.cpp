@@ -16,3 +16,14 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// dump_schema_json_ast
+Rcpp::String dump_schema_json_ast(Rcpp::String graph);
+RcppExport SEXP graphql_dump_schema_json_ast(SEXP graphSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::String >::type graph(graphSEXP);
+    rcpp_result_gen = Rcpp::wrap(dump_schema_json_ast(graph));
+    return rcpp_result_gen;
+END_RCPP
+}
