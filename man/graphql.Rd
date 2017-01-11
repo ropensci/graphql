@@ -5,7 +5,7 @@
 \alias{graphql2json}
 \title{Dump GraphQL Queries to JSON}
 \usage{
-graphql2json(input)
+graphql2json(input, parse_schema = TRUE)
 }
 \arguments{
 \item{input}{a string with graphql syntax}
