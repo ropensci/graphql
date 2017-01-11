@@ -9,6 +9,7 @@
 #' @importFrom Rcpp sourceCpp
 #' @importFrom jsonlite toJSON
 #' @param input a string with graphql syntax
+#' @param parse_schema boolean to enable schema defintion parsing
 #' @examples
 #' graphql2json("{ field(complex: { a: { b: [ $var ] } }) }")
 #' graphql2json("schema { query: QueryType }")
