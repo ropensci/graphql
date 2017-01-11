@@ -15,5 +15,6 @@ Parses GraphQL queries and exports the AST in JSON format.
 }
 \examples{
 graphql2json("{ field(complex: { a: { b: [ $var ] } }) }")
+graphql2json("schema { query: QueryType }")
 }
 

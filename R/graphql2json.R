@@ -9,7 +9,9 @@
 #' @importFrom Rcpp sourceCpp
 #' @importFrom jsonlite toJSON
 #' @param input a string with graphql syntax
-#' @examples graphql2json("{ field(complex: { a: { b: [ $var ] } }) }")
+#' @examples
+#' graphql2json("{ field(complex: { a: { b: [ $var ] } }) }")
+#' graphql2json("schema { query: QueryType }")
 graphql2json <- function(input, parse_schema = TRUE){
   stopifnot(is.character(input))
   input <- paste(input, collapse = "\n")
