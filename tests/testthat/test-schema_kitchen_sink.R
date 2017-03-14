@@ -12,7 +12,7 @@ test_that("kitchen sink schema parses", {
 
   kitchen_schema_txt <- paste(readLines("schema-kitchen-sink.graphql"), collapse = "\n")
 
-  json_txt <- graphql2json(kitchen_schema_txt)
+  json_txt <- graphql2json(kitchen_schema_txt, TRUE)
 
   result <- jsonlite::fromJSON(json_txt)
 
