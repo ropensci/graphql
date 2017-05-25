@@ -20,6 +20,6 @@ Imports:
     jsonlite
 LazyData: NA
 SystemRequirements: NA
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1
 Suggests:
     testthat

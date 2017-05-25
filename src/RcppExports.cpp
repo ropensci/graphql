@@ -17,3 +17,13 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+
+static const R_CallMethodDef CallEntries[] = {
+    {"graphql_dump_json_ast", (DL_FUNC) &graphql_dump_json_ast, 2},
+    {NULL, NULL, 0}
+};
+
+RcppExport void R_init_graphql(DllInfo *dll) {
+    R_registerRoutines(dll, NULL, CallEntries, NULL, NULL);
+    R_useDynamicSymbols(dll, FALSE);
+}
