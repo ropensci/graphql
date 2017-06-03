@@ -11,8 +11,8 @@ Description: Bindings to the 'libgraphqlparser' C++ library. Currently parses
     GraphQL and exports the AST in JSON format.
 License: BSD_3_clause + file LICENSE
 Encoding: UTF-8
-URL: http://graphql.org
-    https://github.com/ropensci/graphql
+URL: http://graphql.org (upstream)
+    https://github.com/ropensci/graphql (devel)
 BugReports: https://github.com/ropensci/graphql/issues
 LinkingTo: Rcpp
 Imports:
@@ -20,6 +20,6 @@ Imports:
     jsonlite
 LazyData: NA
 SystemRequirements: NA
-RoxygenNote: 6.0.1
 Suggests:
     testthat
+RoxygenNote: 6.0.1
