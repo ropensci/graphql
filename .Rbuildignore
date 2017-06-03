@@ -1,9 +1,9 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
-.*\.o
-.*\.so
-.*\.a
-.*\.dll
+.*\.o$
+.*\.so$
+.*\.a$
+.*\.dll$
 src/empty.dll$
 ^\.travis\.yml$
 ^appveyor\.yml$
