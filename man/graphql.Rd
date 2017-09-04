@@ -10,7 +10,7 @@ graphql2json(input, parse_schema = FALSE)
 \arguments{
 \item{input}{a string with graphql syntax}
 
-\item{parse_schema}{boolean to enable schema defintion parsing}
+\item{parse_schema}{boolean to enable schema definition parsing}
 }
 \description{
 Parses GraphQL queries and exports the AST in JSON format.
