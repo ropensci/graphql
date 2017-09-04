@@ -2,6 +2,6 @@
 # Generator token: 10BE3573-1514-4C36-9D1C-5A225CD40393
 
 dump_json_ast <- function(graph, schema) {
-    .Call('graphql_dump_json_ast', PACKAGE = 'graphql', graph, schema)
+    .Call('_graphql_dump_json_ast', PACKAGE = 'graphql', graph, schema)
 }
 

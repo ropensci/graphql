@@ -7,7 +7,7 @@ using namespace Rcpp;
 
 // dump_json_ast
 Rcpp::String dump_json_ast(Rcpp::String graph, bool schema);
-RcppExport SEXP graphql_dump_json_ast(SEXP graphSEXP, SEXP schemaSEXP) {
+RcppExport SEXP _graphql_dump_json_ast(SEXP graphSEXP, SEXP schemaSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -19,7 +19,7 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"graphql_dump_json_ast", (DL_FUNC) &graphql_dump_json_ast, 2},
+    {"_graphql_dump_json_ast", (DL_FUNC) &_graphql_dump_json_ast, 2},
     {NULL, NULL, 0}
 };
 

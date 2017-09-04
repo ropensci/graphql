@@ -1,7 +1,8 @@
 CXX_STD=CXX11
-PKG_CPPFLAGS=-I. -Ilibgraphqlparser
+PKG_CPPFLAGS=-Ilibgraphqlparser $(C_VISIBILITY)
 PKG_CXXFLAGS = $(subst 64,-D__USE_MINGW_ANSI_STDIO,$(subst 32,64,$(WIN)))
-PKG_LIBS=-L. -lstatgraphparser
+PKG_LIBS=-Llibgraphqlparser -lstatgraphparser
+STATLIB = libgraphqlparser/libstatgraphparser.a
 
 LIBGRAPHPARSER= \
 	libgraphqlparser/Ast.o libgraphqlparser/GraphQLParser.o \
@@ -10,14 +11,14 @@ LIBGRAPHPARSER= \
 	libgraphqlparser/c/GraphQLAst.o libgraphqlparser/c/GraphQLAstNode.o \
 	libgraphqlparser/c/GraphQLAstToJSON.o libgraphqlparser/c/GraphQLAstVisitor.o
 
-# all: clean
+all: clean
 
-$(SHLIB): libstatgraphparser.a
+$(SHLIB): $(STATLIB)
 
-libstatgraphparser.a: $(LIBGRAPHPARSER)
-	$(AR) rcs libstatgraphparser.a $(LIBGRAPHPARSER)
+$(STATLIB): $(LIBGRAPHPARSER)
+	$(AR) rcs $(STATLIB) $(LIBGRAPHPARSER)
 
 clean:
-	rm -f $(SHLIB) $(LIBGRAPHPARSER) $(OBJECTS) libstatgraphparser.a
+	rm -f $(SHLIB) $(LIBGRAPHPARSER) $(OBJECTS) $(STATLIB)
 
 .PHONY: all clean
