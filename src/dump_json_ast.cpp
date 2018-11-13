@@ -18,7 +18,7 @@ Rcpp::String dump_json_ast(Rcpp::String graph, bool schema) {
     facebook::graphql::parseString(graph.get_cstring(), &error);
   if (!AST) {
     char buf[1000];
-    strncpy(buf, error, 1000);
+    strncpy(buf, error, 999);
     free((void*) error);
     throw std::runtime_error(buf);
   }
