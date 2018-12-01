@@ -1,6 +1,7 @@
 1.5
-  - Update libgraphqlpaser 
+  - Update libgraphqlpaser
   - Move $(C_VISIBILITY) to CXXFLAGS as requested by BDR
+  - Switch license to MIT to match upstream
 
 1.4
   - Hide internal symbols from DLL

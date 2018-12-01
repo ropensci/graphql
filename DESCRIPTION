@@ -9,7 +9,7 @@ Authors@R: c(
     person("Facebook, Inc", role = c("aut","cph"), comment = "libgraphqlparser C++ library"))
 Description: Bindings to the 'libgraphqlparser' C++ library. Parses GraphQL syntax
     and exports the AST in JSON format.
-License: BSD_3_clause + file LICENSE
+License: MIT + file LICENSE
 Encoding: UTF-8
 URL: http://graphql.org (upstream)
     https://github.com/ropensci/graphql (devel)
