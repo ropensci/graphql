@@ -1,16 +1,14 @@
 /**
- * Copyright (c) 2015, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2015-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  */
 
 #include "position.hh"
 #include "JsonVisitor.h"
 
-#include <assert.h>
+#include <cassert>
 #include <iterator>
 
 namespace facebook {
@@ -18,6 +16,29 @@ namespace graphql {
 namespace ast {
 namespace visitor {
 
+static std::string escape(const char *s) {
+  static char hex[16] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
+  std::string result;
+  while (unsigned char ch = *s++) {
+    if (ch >= '\0' && ch <= '\x1f') {
+      result.push_back('\\');
+      result.push_back('u');
+      result.push_back('0');
+      result.push_back('0');
+      result.push_back(ch >= 16 ? '1' : '0');
+      result.push_back(hex[ch % 16]);
+    } else if (ch == '"') {
+      result.push_back('\\');
+      result.push_back('"');
+    } else if (ch == '\\') {
+      result.push_back('\\');
+      result.push_back('\\');
+    } else {
+      result.push_back(ch);
+    }
+  }
+  return result;
+}
 
 JsonVisitor::NodeFieldPrinter::NodeFieldPrinter(
     JsonVisitor &visitor,
@@ -28,7 +49,10 @@ JsonVisitor::NodeFieldPrinter::NodeFieldPrinter(
   if (!visitor_.printed_.empty()) {
     nextChild_ = visitor_.printed_.back().begin();
   }
-  out_ << "{\"kind\":\"" << nodeKind << "\",\"loc\":";
+  // NOTE: If you're an Emacs user and this file's use of C++11 raw
+  // strings doesn't highlight correctly in c++-mode, try upgrading to
+  // Emacs 26 if you can.
+  out_ << R"({"kind":")" << nodeKind << R"(","loc":)";
   printLocation(out_, node.getLocation());
 }
 
@@ -52,21 +76,21 @@ void JsonVisitor::NodeFieldPrinter::printSingularPrimitiveField(
     const char *fieldName,
     const char *value) {
   printFieldSeparator();
-  out_ << '"' << fieldName << "\":";
-  out_ << '"' << value << '"';
+  out_ << '"' << fieldName << R"(":)";
+  out_ << '"' << escape(value) << '"';
 }
 
 void JsonVisitor::NodeFieldPrinter::printSingularBooleanField(
     const char *fieldName,
     bool value) {
   printFieldSeparator();
-  out_ << '"' << fieldName << "\":";
+  out_ << '"' << fieldName << R"(":)";
   out_ << (value ? "true" : "false");
 }
 
 void JsonVisitor::NodeFieldPrinter::printSingularObjectField(const char *fieldName) {
   printFieldSeparator();
-  out_ << '"' << fieldName << "\":";
+  out_ << '"' << fieldName << R"(":)";
   assert(!visitor_.printed_.empty());
   out_ << *nextChild_++;
 }
@@ -75,7 +99,7 @@ void JsonVisitor::NodeFieldPrinter::printNullableSingularObjectField(
     const char *fieldName,
     const void *value) {
   printFieldSeparator();
-  out_ << '"' << fieldName << "\":";
+  out_ << '"' << fieldName << R"(":)";
   if (value != nullptr) {
     assert(!visitor_.printed_.empty());
     out_ << *nextChild_++;
@@ -89,10 +113,10 @@ void JsonVisitor::NodeFieldPrinter::printLocation(
     std::ostringstream &out,
     const yy::location &location)
 {
-  out << "{\"start\": {\"line\": " << location.begin.line
-       << ",\"column\":" << location.begin.column
-       << "}, \"end\": {\"line\":" << location.end.line
-       << ",\"column\":" << location.end.column
+  out << R"({"start": {"line": )" << location.begin.line
+       << R"(,"column":)" << location.begin.column
+       << R"(}, "end": {"line":)" << location.end.line
+       << R"(,"column":)" << location.end.column
        << "}}";
 }
 
@@ -131,7 +155,7 @@ std::string JsonVisitor::getResult() const {
 
 #include "JsonVisitor.cpp.inc"
 
-}
-}
-}
-}
+}  // namespace visitor
+}  // namespace ast
+}  // namespace graphql
+}  // namespace facebook

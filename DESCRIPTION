@@ -1,14 +1,14 @@
 Package: graphql
 Type: Package
 Title: A GraphQL Query Parser
-Version: 1.4
+Version: 1.5
 Authors@R: c(
     person("Jeroen", "Ooms", , "jeroen@berkeley.edu", role = c("cre", "aut")),
     person("Barret", "Schloerke", , "schloerke@gmail.com", role = "ctb"),
     person("Scott", "Wolchok", role = "ctb"),
     person("Facebook, Inc", role = c("aut","cph"), comment = "libgraphqlparser C++ library"))
-Description: Bindings to the 'libgraphqlparser' C++ library. Currently parses
-    GraphQL and exports the AST in JSON format.
+Description: Bindings to the 'libgraphqlparser' C++ library. Parses GraphQL syntax
+    and exports the AST in JSON format.
 License: BSD_3_clause + file LICENSE
 Encoding: UTF-8
 URL: http://graphql.org (upstream)

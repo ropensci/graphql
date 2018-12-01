@@ -1,10 +1,9 @@
 /**
- * Copyright (c) 2016, Facebook, Inc.
+ * Copyright (c) 2016-present, Facebook, Inc.
  * All rights reserved.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  */
 /** @generated */
 #pragma once
@@ -98,7 +97,7 @@ class Document : public Node {
   const std::vector<std::unique_ptr<Definition>>& getDefinitions() const
   { return *definitions_; }
 
-  void accept(visitor::AstVisitor *visitor) override;
+  void accept(visitor::AstVisitor *visitor) const override;
 };
 
 
@@ -145,7 +144,7 @@ class OperationDefinition : public Definition {
   const SelectionSet& getSelectionSet() const
   { return *selectionSet_; }
 
-  void accept(visitor::AstVisitor *visitor) override;
+  void accept(visitor::AstVisitor *visitor) const override;
 };
 
 
@@ -180,7 +179,7 @@ class VariableDefinition : public Node {
   const Value* getDefaultValue() const
   { return defaultValue_.get(); }
 
-  void accept(visitor::AstVisitor *visitor) override;
+  void accept(visitor::AstVisitor *visitor) const override;
 };
 
 
@@ -203,7 +202,7 @@ class SelectionSet : public Node {
   const std::vector<std::unique_ptr<Selection>>& getSelections() const
   { return *selections_; }
 
-  void accept(visitor::AstVisitor *visitor) override;
+  void accept(visitor::AstVisitor *visitor) const override;
 };
 
 
@@ -261,7 +260,7 @@ class Field : public Selection {
   const SelectionSet* getSelectionSet() const
   { return selectionSet_.get(); }
 
-  void accept(visitor::AstVisitor *visitor) override;
+  void accept(visitor::AstVisitor *visitor) const override;
 };
 
 
@@ -290,7 +289,7 @@ class Argument : public Node {
   const Value& getValue() const
   { return *value_; }
 
-  void accept(visitor::AstVisitor *visitor) override;
+  void accept(visitor::AstVisitor *visitor) const override;
 };
 
 
@@ -319,7 +318,7 @@ class FragmentSpread : public Selection {
   const std::vector<std::unique_ptr<Directive>>* getDirectives() const
   { return directives_.get(); }
 
-  void accept(visitor::AstVisitor *visitor) override;
+  void accept(visitor::AstVisitor *visitor) const override;
 };
 
 
@@ -354,7 +353,7 @@ class InlineFragment : public Selection {
   const SelectionSet& getSelectionSet() const
   { return *selectionSet_; }
 
-  void accept(visitor::AstVisitor *visitor) override;
+  void accept(visitor::AstVisitor *visitor) const override;
 };
 
 
@@ -395,7 +394,7 @@ class FragmentDefinition : public Definition {
   const SelectionSet& getSelectionSet() const
   { return *selectionSet_; }
 
-  void accept(visitor::AstVisitor *visitor) override;
+  void accept(visitor::AstVisitor *visitor) const override;
 };
 
 
@@ -429,7 +428,7 @@ class Variable : public Value {
   const Name& getName() const
   { return *name_; }
 
-  void accept(visitor::AstVisitor *visitor) override;
+  void accept(visitor::AstVisitor *visitor) const override;
 };
 
 
@@ -452,7 +451,7 @@ class IntValue : public Value {
   const char * getValue() const
   { return value_.get(); }
 
-  void accept(visitor::AstVisitor *visitor) override;
+  void accept(visitor::AstVisitor *visitor) const override;
 };
 
 
@@ -475,7 +474,7 @@ class FloatValue : public Value {
   const char * getValue() const
   { return value_.get(); }
 
-  void accept(visitor::AstVisitor *visitor) override;
+  void accept(visitor::AstVisitor *visitor) const override;
 };
 
 
@@ -498,7 +497,7 @@ class StringValue : public Value {
   const char * getValue() const
   { return value_.get(); }
 
-  void accept(visitor::AstVisitor *visitor) override;
+  void accept(visitor::AstVisitor *visitor) const override;
 };
 
 
@@ -521,7 +520,7 @@ class BooleanValue : public Value {
   bool getValue() const
   { return value_; }
 
-  void accept(visitor::AstVisitor *visitor) override;
+  void accept(visitor::AstVisitor *visitor) const override;
 };
 
 
@@ -540,7 +539,7 @@ class NullValue : public Value {
   NullValue(const NullValue&) = delete;
   NullValue& operator=(const NullValue&) = delete;
 
-  void accept(visitor::AstVisitor *visitor) override;
+  void accept(visitor::AstVisitor *visitor) const override;
 };
 
 
@@ -563,7 +562,7 @@ class EnumValue : public Value {
   const char * getValue() const
   { return value_.get(); }
 
-  void accept(visitor::AstVisitor *visitor) override;
+  void accept(visitor::AstVisitor *visitor) const override;
 };
 
 
@@ -586,7 +585,7 @@ class ListValue : public Value {
   const std::vector<std::unique_ptr<Value>>& getValues() const
   { return *values_; }
 
-  void accept(visitor::AstVisitor *visitor) override;
+  void accept(visitor::AstVisitor *visitor) const override;
 };
 
 
@@ -609,7 +608,7 @@ class ObjectValue : public Value {
   const std::vector<std::unique_ptr<ObjectField>>& getFields() const
   { return *fields_; }
 
-  void accept(visitor::AstVisitor *visitor) override;
+  void accept(visitor::AstVisitor *visitor) const override;
 };
 
 
@@ -638,7 +637,7 @@ class ObjectField : public Node {
   const Value& getValue() const
   { return *value_; }
 
-  void accept(visitor::AstVisitor *visitor) override;
+  void accept(visitor::AstVisitor *visitor) const override;
 };
 
 
@@ -667,7 +666,7 @@ class Directive : public Node {
   const std::vector<std::unique_ptr<Argument>>* getArguments() const
   { return arguments_.get(); }
 
-  void accept(visitor::AstVisitor *visitor) override;
+  void accept(visitor::AstVisitor *visitor) const override;
 };
 
 
@@ -701,7 +700,7 @@ class NamedType : public Type {
   const Name& getName() const
   { return *name_; }
 
-  void accept(visitor::AstVisitor *visitor) override;
+  void accept(visitor::AstVisitor *visitor) const override;
 };
 
 
@@ -724,7 +723,7 @@ class ListType : public Type {
   const Type& getType() const
   { return *type_; }
 
-  void accept(visitor::AstVisitor *visitor) override;
+  void accept(visitor::AstVisitor *visitor) const override;
 };
 
 
@@ -747,7 +746,7 @@ class NonNullType : public Type {
   const Type& getType() const
   { return *type_; }
 
-  void accept(visitor::AstVisitor *visitor) override;
+  void accept(visitor::AstVisitor *visitor) const override;
 };
 
 
@@ -770,7 +769,7 @@ class Name : public Node {
   const char * getValue() const
   { return value_.get(); }
 
-  void accept(visitor::AstVisitor *visitor) override;
+  void accept(visitor::AstVisitor *visitor) const override;
 };
 
 
@@ -799,7 +798,7 @@ class SchemaDefinition : public Definition {
   const std::vector<std::unique_ptr<OperationTypeDefinition>>& getOperationTypes() const
   { return *operationTypes_; }
 
-  void accept(visitor::AstVisitor *visitor) override;
+  void accept(visitor::AstVisitor *visitor) const override;
 };
 
 
@@ -828,7 +827,7 @@ class OperationTypeDefinition : public Node {
   const NamedType& getType() const
   { return *type_; }
 
-  void accept(visitor::AstVisitor *visitor) override;
+  void accept(visitor::AstVisitor *visitor) const override;
 };
 
 
@@ -857,7 +856,7 @@ class ScalarTypeDefinition : public Definition {
   const std::vector<std::unique_ptr<Directive>>* getDirectives() const
   { return directives_.get(); }
 
-  void accept(visitor::AstVisitor *visitor) override;
+  void accept(visitor::AstVisitor *visitor) const override;
 };
 
 
@@ -898,7 +897,7 @@ class ObjectTypeDefinition : public Definition {
   const std::vector<std::unique_ptr<FieldDefinition>>& getFields() const
   { return *fields_; }
 
-  void accept(visitor::AstVisitor *visitor) override;
+  void accept(visitor::AstVisitor *visitor) const override;
 };
 
 
@@ -939,7 +938,7 @@ class FieldDefinition : public Node {
   const std::vector<std::unique_ptr<Directive>>* getDirectives() const
   { return directives_.get(); }
 
-  void accept(visitor::AstVisitor *visitor) override;
+  void accept(visitor::AstVisitor *visitor) const override;
 };
 
 
@@ -980,7 +979,7 @@ class InputValueDefinition : public Node {
   const std::vector<std::unique_ptr<Directive>>* getDirectives() const
   { return directives_.get(); }
 
-  void accept(visitor::AstVisitor *visitor) override;
+  void accept(visitor::AstVisitor *visitor) const override;
 };
 
 
@@ -1015,7 +1014,7 @@ class InterfaceTypeDefinition : public Definition {
   const std::vector<std::unique_ptr<FieldDefinition>>& getFields() const
   { return *fields_; }
 
-  void accept(visitor::AstVisitor *visitor) override;
+  void accept(visitor::AstVisitor *visitor) const override;
 };
 
 
@@ -1050,7 +1049,7 @@ class UnionTypeDefinition : public Definition {
   const std::vector<std::unique_ptr<NamedType>>& getTypes() const
   { return *types_; }
 
-  void accept(visitor::AstVisitor *visitor) override;
+  void accept(visitor::AstVisitor *visitor) const override;
 };
 
 
@@ -1085,7 +1084,7 @@ class EnumTypeDefinition : public Definition {
   const std::vector<std::unique_ptr<EnumValueDefinition>>& getValues() const
   { return *values_; }
 
-  void accept(visitor::AstVisitor *visitor) override;
+  void accept(visitor::AstVisitor *visitor) const override;
 };
 
 
@@ -1114,7 +1113,7 @@ class EnumValueDefinition : public Node {
   const std::vector<std::unique_ptr<Directive>>* getDirectives() const
   { return directives_.get(); }
 
-  void accept(visitor::AstVisitor *visitor) override;
+  void accept(visitor::AstVisitor *visitor) const override;
 };
 
 
@@ -1149,7 +1148,7 @@ class InputObjectTypeDefinition : public Definition {
   const std::vector<std::unique_ptr<InputValueDefinition>>& getFields() const
   { return *fields_; }
 
-  void accept(visitor::AstVisitor *visitor) override;
+  void accept(visitor::AstVisitor *visitor) const override;
 };
 
 
@@ -1172,7 +1171,7 @@ class TypeExtensionDefinition : public Definition {
   const ObjectTypeDefinition& getDefinition() const
   { return *definition_; }
 
-  void accept(visitor::AstVisitor *visitor) override;
+  void accept(visitor::AstVisitor *visitor) const override;
 };
 
 
@@ -1207,7 +1206,7 @@ class DirectiveDefinition : public Definition {
   const std::vector<std::unique_ptr<Name>>& getLocations() const
   { return *locations_; }
 
-  void accept(visitor::AstVisitor *visitor) override;
+  void accept(visitor::AstVisitor *visitor) const override;
 };
 
 

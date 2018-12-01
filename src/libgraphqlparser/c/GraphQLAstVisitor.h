@@ -1,10 +1,8 @@
 /**
- * Copyright (c) 2015, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2015-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  */
 
 #pragma once
@@ -45,7 +43,7 @@ struct GraphQLAstNode;
  * callbacks struct as appropriate. userData will be passed as the userData
  * argument to each callback.
  */
-void graphql_node_visit(struct GraphQLAstNode *node,
+void graphql_node_visit(const struct GraphQLAstNode *node,
                         const struct GraphQLAstVisitorCallbacks *callbacks,
                         void *userData);
 

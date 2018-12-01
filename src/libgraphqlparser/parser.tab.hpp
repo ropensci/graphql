@@ -31,16 +31,16 @@
 // version 2.2 of Bison.
 
 /**
- ** \file parser.tab.hpp
+ ** \file /home/jeroen/libgraphqlparser/build/parser.tab.hpp
  ** Define the yy::parser class.
  */
 
 // C++ LALR(1) parser skeleton written by Akim Demaille.
 
-#ifndef YY_YY_PARSER_TAB_HPP_INCLUDED
-# define YY_YY_PARSER_TAB_HPP_INCLUDED
+#ifndef YY_YY_HOME_JEROEN_LIBGRAPHQLPARSER_BUILD_PARSER_TAB_HPP_INCLUDED
+# define YY_YY_HOME_JEROEN_LIBGRAPHQLPARSER_BUILD_PARSER_TAB_HPP_INCLUDED
 // //                    "%code requires" blocks.
-#line 22 "parser.ypp" // lalr1.cc:392
+#line 20 "parser.ypp" // lalr1.cc:377
 
 #include <cstdlib>
 #include <cstring>
@@ -171,7 +171,7 @@ union yystype {                                         \
 #define YYLTYPE yy::location
 
 
-#line 175 "parser.tab.hpp" // lalr1.cc:392
+#line 175 "/home/jeroen/libgraphqlparser/build/parser.tab.hpp" // lalr1.cc:377
 
 
 # include <cstdlib> // std::abort
@@ -243,7 +243,7 @@ union yystype {                                         \
 
 
 namespace yy {
-#line 247 "parser.tab.hpp" // lalr1.cc:392
+#line 247 "/home/jeroen/libgraphqlparser/build/parser.tab.hpp" // lalr1.cc:377
 
 
 
@@ -636,9 +636,9 @@ namespace yy {
 
 
 } // yy
-#line 640 "parser.tab.hpp" // lalr1.cc:392
+#line 640 "/home/jeroen/libgraphqlparser/build/parser.tab.hpp" // lalr1.cc:377
 
 
 
 
-#endif // !YY_YY_PARSER_TAB_HPP_INCLUDED
+#endif // !YY_YY_HOME_JEROEN_LIBGRAPHQLPARSER_BUILD_PARSER_TAB_HPP_INCLUDED

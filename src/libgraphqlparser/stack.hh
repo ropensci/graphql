@@ -31,18 +31,18 @@
 // version 2.2 of Bison.
 
 /**
- ** \file stack.hh
+ ** \file /home/jeroen/libgraphqlparser/build/stack.hh
  ** Define the yy::stack class.
  */
 
-#ifndef YY_YY_STACK_HH_INCLUDED
-# define YY_YY_STACK_HH_INCLUDED
+#ifndef YY_YY_HOME_JEROEN_LIBGRAPHQLPARSER_BUILD_STACK_HH_INCLUDED
+# define YY_YY_HOME_JEROEN_LIBGRAPHQLPARSER_BUILD_STACK_HH_INCLUDED
 
 # include <vector>
 
 
 namespace yy {
-#line 46 "stack.hh" // stack.hh:151
+#line 46 "/home/jeroen/libgraphqlparser/build/stack.hh" // stack.hh:132
   template <class T, class S = std::vector<T> >
   class stack
   {
@@ -152,6 +152,6 @@ namespace yy {
 
 
 } // yy
-#line 156 "stack.hh" // stack.hh:151
+#line 156 "/home/jeroen/libgraphqlparser/build/stack.hh" // stack.hh:132
 
-#endif // !YY_YY_STACK_HH_INCLUDED
+#endif // !YY_YY_HOME_JEROEN_LIBGRAPHQLPARSER_BUILD_STACK_HH_INCLUDED

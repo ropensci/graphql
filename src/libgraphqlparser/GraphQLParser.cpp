@@ -1,10 +1,8 @@
 /**
  * Copyright (c) 2015-present, Facebook, Inc.
- * All rights reserved.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant 
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  */
 
 #include "GraphQLParser.h"
@@ -21,9 +19,12 @@ namespace graphql {
 // Given properly-configured yylex, run the parser and return the
 // result.
 static std::unique_ptr<ast::Node> doParse(const char **outError, yyscan_t scanner, bool enableSchema) {
-  Node *outAST;
+  Node *outAST = nullptr;
   yy::GraphQLParserImpl parser(enableSchema, &outAST, outError, scanner);
   int failure = parser.parse();
+  if (failure) {
+    delete outAST;
+  }
   return !failure ? std::unique_ptr<ast::Node>(outAST) : nullptr;
 }
 
@@ -71,5 +72,5 @@ std::unique_ptr<ast::Node> parseFileWithExperimentalSchemaSupport(
 }
 
 
-}
-}
+}  // namespace graphql
+}  // namespace facebook
