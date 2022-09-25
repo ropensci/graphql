@@ -5,6 +5,11 @@
 
 using namespace Rcpp;
 
+#ifdef RCPP_USE_GLOBAL_ROSTREAM
+Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
+Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
+#endif
+
 // dump_json_ast
 Rcpp::String dump_json_ast(Rcpp::String graph, bool schema);
 RcppExport SEXP _graphql_dump_json_ast(SEXP graphSEXP, SEXP schemaSEXP) {

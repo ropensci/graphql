@@ -90,7 +90,7 @@ notnewline [^\n\r]
   \\f { yyextra->str.push_back('\f'); }
 
   \\u[0-9A-Fa-f]{4} {
-    int ch;
+    unsigned int ch;
     sscanf(yytext + 2, "%x", &ch);
     yyextra->str.push_back(ch);
   }
