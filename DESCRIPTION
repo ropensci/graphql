@@ -11,7 +11,7 @@ Description: Bindings to the 'libgraphqlparser' C++ library. Parses GraphQL synt
     and exports the AST in JSON format.
 License: MIT + file LICENSE
 Encoding: UTF-8
-URL: https://docs.ropensci.org/graphql,  http://graphql.org (upstream)
+URL: https://docs.ropensci.org/graphql/,  https://graphql.org (upstream)
     https://github.com/ropensci/graphql (devel)
 BugReports: https://github.com/ropensci/graphql/issues
 LinkingTo: Rcpp
