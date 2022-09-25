@@ -276,7 +276,7 @@ static bool is_all_whitespace(const std::string &str) {
 static std::string clean_up_block_string(const std::string &str) {
   auto lines = splitLines(str);
   bool first = true;
-  int commonIndent = INT_MAX;
+  unsigned int commonIndent = INT_MAX;
   for (const auto &line : lines) {
     if (first) {
       first = false;
