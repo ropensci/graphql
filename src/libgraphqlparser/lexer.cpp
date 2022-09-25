@@ -1038,7 +1038,7 @@ case 12:
 YY_RULE_SETUP
 #line 93 "lexer.lpp"
 {
-    int ch;
+    unsigned int ch;
     sscanf(yytext + 2, "%x", &ch);
     yyextra->str.push_back(ch);
   }
@@ -2569,7 +2569,7 @@ static std::vector<std::string> splitLines(const std::string &str) {
   return lines;
 }
 
-static int count_leading_whitespace(const std::string &str) {
+static unsigned int count_leading_whitespace(const std::string &str) {
   auto pos = str.find_first_not_of(" \t", 0, strlen(" \t"));
   if (pos == std::string::npos) {
     return str.length();
