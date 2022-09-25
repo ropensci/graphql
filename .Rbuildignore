@@ -9,3 +9,4 @@ src/empty.dll$
 ^\.travis\.yml$
 ^appveyor\.yml$
 ^README.md$
+^\.github$
