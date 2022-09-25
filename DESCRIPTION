@@ -1,7 +1,7 @@
 Package: graphql
 Type: Package
 Title: A GraphQL Query Parser
-Version: 1.5
+Version: 1.5.1
 Authors@R: c(
     person("Jeroen", "Ooms", , "jeroen@berkeley.edu", role = c("cre", "aut")),
     person("Barret", "Schloerke", , "schloerke@gmail.com", role = "ctb"),

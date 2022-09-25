@@ -1,3 +1,6 @@
+1.5.1
+  - Fix compiler warnings about signed/unsigned int
+
 1.5
   - Update libgraphqlpaser
   - Move $(C_VISIBILITY) to CXXFLAGS as requested by BDR
