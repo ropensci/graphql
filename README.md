@@ -3,7 +3,7 @@
 > Bindings to the 'libgraphqlparser' C++ library. Parses GraphQL syntax
   and exports the AST in JSON format.
 
-[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
+[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/graphql)](https://cran.r-project.org/package=graphql)
 [![CRAN RStudio mirror downloads](http://cranlogs.r-pkg.org/badges/graphql)](https://cran.r-project.org/package=graphql)
 [![Github Stars](https://img.shields.io/github/stars/ropensci/graphql.svg?style=social&label=Github)](https://github.com/ropensci/graphql)
