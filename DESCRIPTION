@@ -7,12 +7,12 @@ Authors@R: c(
     person("Barret", "Schloerke", , "schloerke@gmail.com", role = "ctb"),
     person("Scott", "Wolchok", role = "ctb"),
     person("Facebook, Inc", role = c("aut","cph"), comment = "libgraphqlparser C++ library"))
-Description: Bindings to the 'libgraphqlparser' C++ library. Parses GraphQL syntax
-    and exports the AST in JSON format.
+Description: Bindings to the 'libgraphqlparser' C++ library. Parses GraphQL
+    <https://graphql.org> syntax and exports the AST in JSON format.
 License: MIT + file LICENSE
 Encoding: UTF-8
-URL: https://docs.ropensci.org/graphql/,  https://graphql.org (upstream)
-    https://github.com/ropensci/graphql (devel)
+URL: https://docs.ropensci.org/graphql/
+    https://ropensci.r-universe.dev/graphql
 BugReports: https://github.com/ropensci/graphql/issues
 LinkingTo: Rcpp
 Imports:
