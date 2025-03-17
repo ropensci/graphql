@@ -10,14 +10,12 @@ LIBGRAPHPARSER= \
 	libgraphqlparser/c/GraphQLAst.o libgraphqlparser/c/GraphQLAstNode.o \
 	libgraphqlparser/c/GraphQLAstToJSON.o libgraphqlparser/c/GraphQLAstVisitor.o
 
-all: clean
+all: $(SHLIB) cleanup
 
 $(SHLIB): $(STATLIB)
 
 $(STATLIB): $(LIBGRAPHPARSER)
 	$(AR) rcs $(STATLIB) $(LIBGRAPHPARSER)
 
-clean:
-	rm -f $(SHLIB) $(LIBGRAPHPARSER) $(OBJECTS) $(STATLIB)
-
-.PHONY: all clean
+cleanup: $(SHLIB)
+	rm -f $(LIBGRAPHPARSER) $(STATLIB)
