@@ -1,6 +1,6 @@
-PKG_CPPFLAGS=-Ilibgraphqlparser
-PKG_CXXFLAGS = $(subst 64,-D__USE_MINGW_ANSI_STDIO,$(subst 32,64,$(WIN)))  $(C_VISIBILITY)
-PKG_LIBS=-Llibgraphqlparser -lstatgraphparser
+PKG_CPPFLAGS = -Ilibgraphqlparser
+PKG_CXXFLAGS = $(CXX_VISIBILITY)
+PKG_LIBS = -Llibgraphqlparser -lstatgraphparser
 STATLIB = libgraphqlparser/libstatgraphparser.a
 
 LIBGRAPHPARSER= \
@@ -15,7 +15,10 @@ all: $(SHLIB) cleanup
 $(SHLIB): $(STATLIB)
 
 $(STATLIB): $(LIBGRAPHPARSER)
-	$(AR) rcs $(STATLIB) $(LIBGRAPHPARSER)
 
 cleanup: $(SHLIB)
 	@rm -f $(LIBGRAPHPARSER) $(STATLIB)
+
+# On Windows this rule is masked by Makeconf in base R
+%.a:
+	@$(AR) crs $@ $^ && $(STRIP_STATIC_LIB) $@ || true
